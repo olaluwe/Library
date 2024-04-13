@@ -1,38 +1,18 @@
 #include "BookBST.h"
-#include <utility> // For std::move
 
-// BSTNode constructor implementation
+// Define the BSTNode constructor
 BSTNode::BSTNode(Book book) : book(std::move(book)), left(nullptr), right(nullptr) {}
 
-// BookBST constructor
+// Define the BookBST constructor
 BookBST::BookBST() : root(nullptr) {}
 
-// BookBST destructor
-BookBST::~BookBST() 
-{
+// Define the destructor for BookBST
+BookBST::~BookBST() {
     clear(root);
 }
 
-// insertHelper private member function
-BSTNode* BookBST::insertHelper(BSTNode* node, const Book& book) 
-{
-    if (!node) {
-        return new BSTNode(book);
-    }
-
-    // Assume that the Book class has a valid operator< for comparison
-    if (book < node->book) {
-        node->left = insertHelper(node->left, book);
-    } else {
-        node->right = insertHelper(node->right, book);
-    }
-
-    return node;
-}
-
-// clear helper function for destructor
-void BookBST::clear(BSTNode* node) 
-{
+// Implement the clear method to deallocate all nodes
+void BookBST::clear(BSTNode* node) {
     if (node) {
         clear(node->left);
         clear(node->right);
@@ -40,10 +20,35 @@ void BookBST::clear(BSTNode* node)
     }
 }
 
-// Public insert function
-void BookBST::insert(const Book& book) 
-{
+// Implement other member functions as needed
+void BookBST::insert(const Book& book) {
     root = insertHelper(root, book);
 }
 
-// Additional member functions (search, traversal, etc.) should also be implemented
+BSTNode* BookBST::insertHelper(BSTNode* node, const Book& book) {
+    // Implementation of BST insertion logic
+    if (!node) return new BSTNode(book);
+    // Further logic as necessary...
+    return node;
+}
+
+std::vector<Book*> BookBST::search(const std::string& title) {
+    std::vector<Book*> results;
+    searchHelper(root, title, results);
+    return results;
+}
+
+void BookBST::searchHelper(BSTNode* node, const std::string& title, std::vector<Book*>& results) {
+    if (!node) return;  // Base case: node is nullptr
+
+    // Check the current node's book title against the search title
+    if (node->book.title == title) {
+        results.push_back(&node->book);  // Add the address of the book to the results vector
+    }
+
+    // Recursively search in the left subtree
+    searchHelper(node->left, title, results);
+
+    // Recursively search in the right subtree
+    searchHelper(node->right, title, results);
+}

@@ -1,17 +1,15 @@
 #ifndef BOOK_BST_H
 #define BOOK_BST_H
 
-#include "Book.h" // Make sure this path is correct based on your project structure
+#include "Book.h" // Ensure this path is correct based on your project structure
 
 // Forward declaration of BSTNode to resolve circular dependency
-struct BSTNode;
-
-// Node structure for a Binary Search Tree
 struct BSTNode {
     Book book;
     BSTNode* left;
     BSTNode* right;
 
+    // Declare the constructor, do not define it here
     explicit BSTNode(Book book);
 };
 
@@ -19,25 +17,22 @@ struct BSTNode {
 class BookBST {
     BSTNode* root;
 
-    public:
-        BookBST();
-        ~BookBST(); // Destructor to deallocate nodes
-        BookBST(const BookBST&) = delete; // Prevent copy construction
-        BookBST& operator=(const BookBST&) = delete; // Prevent assignment
+public:
+    BookBST();
+    ~BookBST(); // Destructor to deallocate nodes, should be defined in the .cpp file
 
-        // Member functions
-        void insert(const Book& book);
+    BookBST(const BookBST&) = delete; // Prevent copy construction
+    BookBST& operator=(const BookBST&) = delete; // Prevent assignment
 
-        // You may also want to provide functions to remove a book, search for a book, etc.
-        // ...
+    // Member functions
+    void insert(const Book& book);
+    std::vector<Book*> search(const std::string& title); // Search for books by title and return a vector of pointers
 
-    private:
-        // Helper functions
-        BSTNode* insertHelper(BSTNode* node, const Book& book);
-        void clear(BSTNode* node);
-
-        // Add other helper functions as needed for searching, traversal, etc.
-        // ...
+private:
+    // Helper functions
+    BSTNode* insertHelper(BSTNode* node, const Book& book);
+    void clear(BSTNode* node);
+    void searchHelper(BSTNode* node, const std::string& title, std::vector<Book*>& results); // Helper for searching books
 };
 
 #endif // BOOK_BST_H

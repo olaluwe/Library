@@ -2,6 +2,10 @@
 
 using namespace std;
 
+Miscellaneous::Miscellaneous() {}
+
+Miscellaneous::~Miscellaneous() {}
+
 // Function to convert a valid string from the user to Titlecase format
 std::string Miscellaneous::titleCase(const std::string& str) {
     if (str.empty()) return "";
@@ -28,7 +32,6 @@ std::string Miscellaneous::getValidString(std::string prompt)
     {
         std::cout << prompt;
         std::getline(std::cin, myString);
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear input buffer
     } while (myString.empty());
 
     return myString;

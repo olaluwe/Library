@@ -1,11 +1,6 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
 
-#include "Book.h"
-#include <unordered_map>
-#include <queue>
-#include <stack>
-#include <string>
 #include "BookBST.h"
 
 class Library {
@@ -17,10 +12,12 @@ class Library {
     public:
         Library();
 
-        void addBook(const Book& book);
-        void issueBook(int bookId);
-        std::vector<Book*> searchBookTitle(const std::string& title);
-        void displayBooksByGenre(const std::string& genre);
+        void addBook(const Book&);
+        void issueBook(const std::string&);
+        std::vector<std::unordered_map<std::string, Book>> searchBookTitle(const std::string&);
+        Book searchBookTitleByGenre(const std::string &, const std::string &);
+        void returnBook(const std::string &, const std::string &);
+        void displayBooksByGenre(const std::string&);
         void displayBooks();
 };
 

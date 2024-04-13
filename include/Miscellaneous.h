@@ -2,22 +2,14 @@
 #define MISCELLANEOUS_H
 
 // Include necessary headers
-#include <string>
-#include <array>
-#include <vector>
-#include <limits>
-#include <iostream>
-#include <sstream>
-#include <algorithm>
+#include "Include.h"
 
 using namespace std;
 
 class Miscellaneous
 {
-  private:
-    /* data */
   public:
-    Miscellaneous(/* args */);
+    Miscellaneous();
     ~Miscellaneous();
 
     std::string intToString(int);
@@ -27,13 +19,5 @@ class Miscellaneous
     int getValidInt(std::string);
     std::string titleCase(const std::string&);
 };
-
-Miscellaneous::Miscellaneous(/* args */)
-{
-}
-
-Miscellaneous::~Miscellaneous()
-{
-}
 
 #endif // MISCELLANEOUS_H
