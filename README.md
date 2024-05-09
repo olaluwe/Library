@@ -72,18 +72,19 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```bash
 # Clone this project
-$ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/library
+$ git clone [https://github.com/{{olaluwe}}/Library]
 
 # Access
 $ cd library
 
 # Install dependencies
-$ yarn
+$ make
 
 # Run the project
-$ yarn start
+$ ./bin/library
 
-# The server will initialize in the <http://localhost:3000>
+# clean objects
+make clean
 ```
 
 ## :memo: License ##
